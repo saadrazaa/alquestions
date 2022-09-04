@@ -18,6 +18,7 @@ class FibonacciNumberGeneratorTest {
             assertEquals(FibonacciNumberGenerator.getFibNum(1L), 1L);
             assertEquals(FibonacciNumberGenerator.getFibNum(5L), 5L);
             assertEquals(FibonacciNumberGenerator.getFibNum(6L), 8L);
+            assertThrows(IllegalArgumentException.class, () -> FibonacciNumberGenerator.getFibNum(-1L));
         });
     }
 
@@ -29,6 +30,7 @@ class FibonacciNumberGeneratorTest {
             assertEquals(FibonacciNumberGenerator.getSequence(1L), List.of(0L,1L));
             assertEquals(FibonacciNumberGenerator.getSequence(5L), List.of(0L,1L, 1L, 2L, 3L, 5L));
             assertEquals(FibonacciNumberGenerator.getSequence(6L), List.of(0L,1L, 1L, 2L, 3L, 5L, 8L));
+            assertThrows(IllegalArgumentException.class, () -> FibonacciNumberGenerator.getFibNum(-1L));
         });
     }
 }

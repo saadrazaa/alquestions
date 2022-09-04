@@ -20,6 +20,11 @@ public class FibonacciNumberGenerator {
      */
     public static Long getFibNum(Long index){
 
+        // positive integers allowed only
+        if(index < 0){
+            throw new IllegalArgumentException("Index cannot be less than zero. Given: " + index);
+        }
+
         // if solutions is already computed, return that
         if (dpMap.containsKey(index)){
             return dpMap.get(index);
@@ -27,10 +32,9 @@ public class FibonacciNumberGenerator {
 
         // base case for recursion, for 0,1 index args
         if (index <=1){
-            Long num = Math.max(0, index);
             dpMap.put(0L, 0L);
             dpMap.put(1L, 1L);
-            return num;
+            return index;
         }
 
         // recurse on previous 2 Fib numbers
@@ -44,6 +48,11 @@ public class FibonacciNumberGenerator {
      * @return a list of Long type Fib numbers
      */
     public static List<Long> getSequence(Long index){
+
+        // positive integers allowed only
+        if(index < 0){
+            throw new IllegalArgumentException("Index cannot be less than zero. Given: " + index);
+        }
 
         // if results are already computed, up to the index
         if (dpMap.containsKey(index)){
