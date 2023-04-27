@@ -14,6 +14,7 @@ class TopKFrequentElementsTest {
     void findKFrequent(){
         assertAll(()->{
             assertEquals(TopKFrequentElements.find(new int[]{1, 1, 1, 2, 2, 3}, 2), List.of(1,2));
+            assertEquals(TopKFrequentElements.find(new int[]{1}, 1), List.of(1));
         });
     }
 }
