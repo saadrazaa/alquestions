@@ -30,13 +30,11 @@ public class ListNode {
             return null;
         }
 
-        ListNode prev = null;
         ListNode curr = new ListNode(nums.get(0), null);
 
         ListNode head = curr;
 
         for(int i = 1; i < nums.size(); i++){
-            prev = curr;
             curr.next = new ListNode(nums.get(i), null);
             curr = curr.next;
         }
