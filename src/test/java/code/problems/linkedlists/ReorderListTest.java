@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ReorderListTest {
 
     @Test
-    @DisplayName("test the reorder function according to the structure specified in the problem statement")
+    @DisplayName("test the reorder function according to the problem statement")
     void test(){
         assertAll(() -> {
             assertEquals(List.of(1,5,2,4,3), ListNode.toArray(
