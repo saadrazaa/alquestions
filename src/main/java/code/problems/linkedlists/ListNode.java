@@ -41,4 +41,23 @@ public class ListNode {
 
         return head;
     }
+
+    public static ListNode getNodeAt(ListNode head, int index){
+
+        ListNode tmp = head;
+
+        while (index > 0 && tmp != null){
+            tmp = tmp.next;
+            index -= 1;
+        }
+
+        return tmp;
+
+    }
+
+    @Override
+    public String toString() {
+        return "ListNode{" +
+                "value=" + value +'}';
+    }
 }
