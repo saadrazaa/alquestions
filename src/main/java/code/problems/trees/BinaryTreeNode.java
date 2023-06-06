@@ -38,16 +38,20 @@ public class BinaryTreeNode {
             BinaryTreeNode currNode = queue.get(0);
             queue.remove(0);
 
-            int val = values.get(index++);
-            currNode.left = new BinaryTreeNode(val);
-            queue.add(currNode.left);
+            Integer val = values.get(index++);
+            if(val != null){
+                currNode.left = new BinaryTreeNode(val);
+                queue.add(currNode.left);
+            }
 
             if (index >= size)
                 break;
 
             val = values.get(index++);
-            currNode.right = new BinaryTreeNode(val);
-            queue.add(currNode.right);
+            if(val != null) {
+                currNode.right = new BinaryTreeNode(val);
+                queue.add(currNode.right);
+            }
 
         }
 
