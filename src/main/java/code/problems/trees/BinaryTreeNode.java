@@ -1,9 +1,6 @@
 package code.problems.trees;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class BinaryTreeNode {
 
@@ -54,6 +51,32 @@ public class BinaryTreeNode {
             }
 
         }
+
+        return root;
+    }
+
+    public static BinaryTreeNode constructBinarySearchTree(List<Integer> nums){
+        if(nums == null || nums.size() == 0){
+            return null;
+        }
+
+        nums = nums.stream().filter(Objects::nonNull).toList();
+        nums = new ArrayList<>(nums);
+        Collections.sort(nums);
+
+        return BinaryTreeNode._buildBST(nums, 0, nums.size()-1);
+    }
+
+    static BinaryTreeNode _buildBST(List<Integer> nums, int left, int right){
+        if(left > right){
+            return null;
+        }
+
+        int mid = Math.floorDiv((left + right), 2);
+        BinaryTreeNode root = new BinaryTreeNode(nums.get(mid));
+
+        root.left = _buildBST(nums, left, mid - 1);
+        root.right = _buildBST(nums, mid + 1, right);
 
         return root;
     }
