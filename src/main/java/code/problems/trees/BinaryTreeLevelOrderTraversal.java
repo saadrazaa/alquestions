@@ -1,7 +1,9 @@
 package code.problems.trees;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 /*
 Problem:
@@ -20,8 +22,30 @@ public class BinaryTreeLevelOrderTraversal {
         return result;
     }
 
-    public static List<List<Integer>> traverseIterative(){
-        return List.of();
+    public static List<List<Integer>> traverseIterative(BinaryTreeNode root){
+        List<List<Integer>> result = new ArrayList<>();
+
+        Queue<BinaryTreeNode> q = new ArrayDeque<>();
+        if(root !=null) q.add(root);
+
+        while(!q.isEmpty()){
+            int qLen = q.size();
+            List<Integer> level = new ArrayList<>();
+
+            for(int i = 0; i < qLen; i++){
+                BinaryTreeNode node = q.remove();
+
+                level.add(node.value);
+                if(node.left != null) q.add(node.left);
+                if(node.right != null) q.add(node.right);
+            }
+
+            if(!level.isEmpty()){
+                result.add(level);
+            }
+        }
+
+        return result;
     }
 
     public static void _preOrder(BinaryTreeNode root, List<List<Integer>> arr, int level){

@@ -33,4 +33,20 @@ class BinaryTreeLevelOrderTraversalTest {
             ));
         });
     }
+
+    @Test
+    void testIterative(){
+        assertAll(()->{
+            assertEquals(List.of(List.of(3),List.of(9,20),List.of(15,7)),
+                    BinaryTreeLevelOrderTraversal.traverseIterative(
+                            BinaryTreeNode.constructBinaryTree(l1)
+                    ));
+            assertEquals(List.of(List.of(1)), BinaryTreeLevelOrderTraversal.traverseIterative(
+                    BinaryTreeNode.constructBinaryTree(List.of(1))
+            ));
+            assertEquals(List.of(), BinaryTreeLevelOrderTraversal.traverseIterative(
+                    BinaryTreeNode.constructBinaryTree(List.of())
+            ));
+        });
+    }
 }
