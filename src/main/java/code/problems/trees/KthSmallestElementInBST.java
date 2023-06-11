@@ -1,5 +1,7 @@
 package code.problems.trees;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 /*
@@ -34,5 +36,11 @@ public class KthSmallestElementInBST {
         }
 
         return -1;
+    }
+
+    public static int getRecursive(BinaryTreeNode root, int k){
+        List<Integer> arr = new ArrayList<>();
+        BinaryTreeNode._toInfix(root, arr);
+        return arr.get(k-1);
     }
 }

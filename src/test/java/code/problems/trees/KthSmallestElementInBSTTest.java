@@ -48,4 +48,22 @@ class KthSmallestElementInBSTTest {
         });
     }
 
+    @Test
+    void testRecursive(){
+        assertAll(()->{
+            assertEquals(2, KthSmallestElementInBST.getRecursive(
+                    BinaryTreeNode.constructBinaryTree(l1), 2
+            ));
+            assertEquals(1, KthSmallestElementInBST.getRecursive(
+                    BinaryTreeNode.constructBinaryTree(l2), 1
+            ));
+            assertEquals(3, KthSmallestElementInBST.getRecursive(
+                    BinaryTreeNode.constructBinaryTree(l3), 3
+            ));
+            assertEquals(1, KthSmallestElementInBST.getRecursive(
+                    BinaryTreeNode.constructBinaryTree(l4), 1
+            ));
+        });
+    }
+
 }
