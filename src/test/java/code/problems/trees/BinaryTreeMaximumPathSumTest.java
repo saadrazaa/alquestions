@@ -27,6 +27,9 @@ class BinaryTreeMaximumPathSumTest {
             assertEquals(42, BinaryTreeMaximumPathSum.find(
                     BinaryTreeNode.constructBinaryTree(l1)
             ));
+            assertEquals(3, BinaryTreeMaximumPathSum.find(
+                    BinaryTreeNode.constructBinaryTree(List.of(-1,-2,3))
+            ));
         });
     }
 
