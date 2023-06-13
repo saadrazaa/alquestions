@@ -17,30 +17,24 @@ The number of nodes in the tree is in the range [1, 3 * 104].
  */
 public class BinaryTreeMaximumPathSum {
 
+    static int maxSumWithoutSplit;
     public static int find(BinaryTreeNode root){
-        List<Integer> result = _dfs(root);
-        return Math.max(result.get(0), result.get(1));
+        maxSumWithoutSplit = Integer.MIN_VALUE;
+        _dfs(root);
+        return maxSumWithoutSplit;
     }
 
-    static List<Integer> _dfs(BinaryTreeNode root){
+    static int _dfs(BinaryTreeNode root){
         if(root == null){
-            return new ArrayList<>(List.of(0,0));
+            return 0;
         }
 
-        List<Integer> sumsLeft = _dfs(root.left);
-        List<Integer> sumsRight = _dfs(root.right);
+        int leftSum = Math.max(_dfs(root.left), 0);
+        int rightSum = Math.max(_dfs(root.right), 0);
 
-        int leftSum = sumsLeft.get(0);
-        int rightSum = sumsRight.get(0);
-        int maxWithoutSplitSum = Math.max(sumsLeft.get(1), sumsRight.get(1));
+        maxSumWithoutSplit = Math.max(maxSumWithoutSplit, root.value + leftSum + rightSum);
 
-        leftSum = Math.max(leftSum, 0);
-        rightSum = Math.max(rightSum, 0);
-
-        return new ArrayList<>(
-                List.of(root.value + Math.max(leftSum, rightSum),
-                        Math.max(root.value + leftSum + rightSum, maxWithoutSplitSum)
-                ));
+        return root.value + Math.max(leftSum, rightSum);
 
     }
 }
