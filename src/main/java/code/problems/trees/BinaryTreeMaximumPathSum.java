@@ -15,15 +15,19 @@ public class BinaryTreeMaximumPathSum {
             return new ArrayList<>(List.of(0,0));
         }
 
-        int leftSum = _dfs(root.left).get(0);
-        int rightSum = _dfs(root.right).get(0);
+        List<Integer> sumsLeft = _dfs(root.left);
+        List<Integer> sumsRight = _dfs(root.right);
+
+        int leftSum = sumsLeft.get(0);
+        int rightSum = sumsRight.get(0);
+        int maxWithoutSplitSum = Math.max(sumsLeft.get(1), sumsRight.get(1));
 
         leftSum = Math.max(leftSum, 0);
         rightSum = Math.max(rightSum, 0);
 
         return new ArrayList<>(
                 List.of(root.value + Math.max(leftSum, rightSum),
-                        root.value + leftSum + rightSum
+                        Math.max(root.value + leftSum + rightSum, maxWithoutSplitSum)
                 ));
 
     }
