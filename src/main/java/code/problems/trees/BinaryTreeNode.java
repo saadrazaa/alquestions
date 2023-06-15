@@ -88,20 +88,31 @@ public class BinaryTreeNode {
             return values;
         }
 
-        Queue<BinaryTreeNode> nodes = new ArrayDeque<>();
+        List<BinaryTreeNode> nodes = new ArrayList<>();
         nodes.add(root);
 
         while(!nodes.isEmpty()){
-            BinaryTreeNode node = nodes.remove();
-            values.add(node.value);
+            BinaryTreeNode node = nodes.get(0);
+            nodes.remove(0);
 
-            if(node.left != null){
+            if(node != null){
+                values.add(node.value);
                 nodes.add(node.left);
-            }
-
-            if(node.right != null){
                 nodes.add(node.right);
             }
+            else{
+                values.add(-1);
+            }
+
+//            values.add(node.value);
+//
+//            if(node.left != null){
+//                nodes.add(node.left);
+//            }
+//
+//            if(node.right != null){
+//                nodes.add(node.right);
+//            }
 
         }
 
