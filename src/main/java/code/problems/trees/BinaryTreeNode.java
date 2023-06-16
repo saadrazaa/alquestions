@@ -81,7 +81,7 @@ public class BinaryTreeNode {
         return root;
     }
 
-    public static List<Integer> toArrayList(BinaryTreeNode root){
+    public static List<Integer> toArrayListWithNulls(BinaryTreeNode root){
         List<Integer> values = new ArrayList<>();
 
         if(root == null){
@@ -104,15 +104,34 @@ public class BinaryTreeNode {
                 values.add(-1);
             }
 
-//            values.add(node.value);
-//
-//            if(node.left != null){
-//                nodes.add(node.left);
-//            }
-//
-//            if(node.right != null){
-//                nodes.add(node.right);
-//            }
+        }
+
+        return values;
+    }
+
+    public static List<Integer> toArrayList(BinaryTreeNode root){
+        List<Integer> values = new ArrayList<>();
+
+        if(root == null){
+            return values;
+        }
+
+        List<BinaryTreeNode> nodes = new ArrayList<>();
+        nodes.add(root);
+
+        while(!nodes.isEmpty()){
+            BinaryTreeNode node = nodes.get(0);
+            nodes.remove(0);
+
+            values.add(node.value);
+
+            if(node.left != null){
+                nodes.add(node.left);
+            }
+
+            if(node.right != null){
+                nodes.add(node.right);
+            }
 
         }
 
