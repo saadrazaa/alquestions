@@ -33,6 +33,9 @@ class WordSearchIITest {
             assertEquals(Set.of(), new HashSet<>(
                     WordSearchII.findWords(board2, words2)
             ));
+            assertEquals(Set.of("dca"), new HashSet<>(
+                    WordSearchII.findWords(board2, List.of("dca"))
+            ));
         });
     }
 }
