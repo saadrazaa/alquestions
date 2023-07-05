@@ -13,4 +13,10 @@ public class GraphNode {
         this.value = value;
     }
 
+    @Override
+    public String toString() {
+        return "GraphNode{" +
+                "value=" + value +
+                '}';
+    }
 }

@@ -21,7 +21,6 @@ public class UndirectedGraph {
             GraphNode n2 = map.get(edge.get(1));
 
             n1.neighbors.add(n2);
-            n2.neighbors.add(n1);
 
         }
 
