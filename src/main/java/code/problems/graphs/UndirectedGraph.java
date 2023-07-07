@@ -9,7 +9,17 @@ public class UndirectedGraph {
     public UndirectedGraph(List<List<Integer>> edges){
         Map<Integer, GraphNode> map = new HashMap<>();
 
+        if(edges.isEmpty()){
+            hook = null;
+            return;
+        }
+
         for(List<Integer> edge : edges){
+            if(edge.isEmpty()){
+                hook = null;
+                return;
+            }
+
             if(!map.containsKey(edge.get(0))){
                 map.put(edge.get(0), new GraphNode(edge.get(0)));
             }
@@ -27,16 +37,16 @@ public class UndirectedGraph {
         hook = map.values().stream().toList().get(0);
     }
 
-    public List<List<Integer>> toAdjList(){
+    public static List<List<Integer>> toAdjList(GraphNode node){
         Set<GraphNode> visited = new HashSet<>();
         Set<List<Integer>> result = new HashSet<>();
 
-        _dfsForAdjList(hook, visited, result);
+        _dfsForAdjList(node, visited, result);
         return result.stream().toList();
     }
 
-    private void _dfsForAdjList(GraphNode node, Set<GraphNode> visited, Set<List<Integer>> result){
-        if(visited.contains(node)){
+    private static void _dfsForAdjList(GraphNode node, Set<GraphNode> visited, Set<List<Integer>> result){
+        if(node == null || visited.contains(node)){
             return;
         }
 
