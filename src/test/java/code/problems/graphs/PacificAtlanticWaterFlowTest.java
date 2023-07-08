@@ -20,6 +20,10 @@ class PacificAtlanticWaterFlowTest {
                 Arrays.asList(5,1,1,2,4)
         );
 
+        List<List<Integer>> heights2 = Arrays.asList(
+                Arrays.asList(1)
+        );
+
         assertAll(()->{
             assertEquals(Set.copyOf(List.of(
                     List.of(0,4),
@@ -30,6 +34,9 @@ class PacificAtlanticWaterFlowTest {
                     List.of(3,1),
                     List.of(4,0)
             )), Set.copyOf(PacificAtlanticWaterFlow.calculate(heights1)));
+            assertEquals(Set.copyOf(List.of(
+                    List.of(0,1)
+            )), Set.copyOf(PacificAtlanticWaterFlow.calculate(heights2)));
         });
     }
 }
